@@ -260,18 +260,18 @@
 			.sidebar {
 				height: 60px;
 				width: 100%;
-				background-color: black;
+				background-color: #090f01;
 			}
 			.header {
 				flex-wrap: wrap;
-				margin-top: 60px;
+				margin-top: 30px;
 			}
 			.header__content {
 				width: 100%;
 			}
 			.header__image {
-				width: 100%;
-				max-height: 400px;
+				width: 90%;
+				/*max-height: 200px;*/
 				margin: 0 auto;
 			}
 			.scroller {
@@ -281,7 +281,7 @@
 				display: none;
 			}
 			.header__btn {
-				margin-top: 100px;
+				/*margin-top: 100px;*/
 				margin-bottom: 100px;
 			}
 			.header__image-lg {
@@ -293,6 +293,10 @@
 			}
 			.header__logo-sidebar {
 				display: block;
+				display: flex;
+				justify-content: flex-end;
+				margin-right: 40px;
+				font-size: 30px;
 			}
 			.header__logo-header {
 				display: none;
@@ -302,10 +306,19 @@
 				margin-left: 50px;
 			}
 			.menu__btn {
-				left: 85%;
+				left: 5%;
 			}
 			.menu__box {
 			  width: 100%;
+			}
+			.header__title {
+				margin-top: -60px;
+			}
+			.header__logo-sp2 {
+				font-size: 20px;
+			}
+			.wrap {
+				font-size: 20px;
 			}
 		}
  
@@ -336,6 +349,13 @@
 
 	<div class="wrap-site">
 		<div class="sidebar">
+			<a href="#" class="header__logo header__logo-sidebar">
+				<div class="wrap">
+				Art Mafi<span class="header__logo-sp1">a</span>
+				<span class="header__logo-sp2">Studi<span class="header__logo-sp1">a</span></span>
+				</div>
+				<!-- <span class="header__logo-sp2">Studia</span> -->
+			</a>
 			<div class="hamburger-menu">
 		    <input id="menu__toggle" type="checkbox" />
 		    <label class="menu__btn" for="menu__toggle">
@@ -349,10 +369,6 @@
 					<li><a class="menu__item" href="#">Контакты</a></li>
 		    </ul>
 		  </div>
-	  	<a href="#" class="header__logo header__logo-sidebar">
-				Art Mafi<span class="header__logo-sp1">a</span>
-				<!-- <span class="header__logo-sp2">Studia</span> -->
-			</a>
 		</div>
 		<header class="header">
 			<div class="header__content">
