@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>ART MAFIA</title>
+	<style type="text/css">
+
+		body {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		a {
+			text-decoration: none;
+			color: black;
+		}
+		ul {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+
+		/* Start Burger Menu */
+
+		#menu__toggle {
+		  opacity: 0;
+		}
+		#menu__toggle:checked ~ .menu__btn > span {
+		  transform: rotate(45deg);
+		}
+		#menu__toggle:checked ~ .menu__btn > span::before {
+		  top: 0;
+		  transform: rotate(0);
+		}
+		#menu__toggle:checked ~ .menu__btn > span::after {
+		  top: 0;
+		  transform: rotate(90deg);
+		}
+		#menu__toggle:checked ~ .menu__box {
+		  visibility: visible;
+		  left: 0;
+		}
+		.menu__btn {
+		  display: flex;
+		  align-items: center;
+		  position: fixed;
+		  top: 26px;
+		  left: 33px;
+		  width: 26px;
+		  height: 26px;
+		  cursor: pointer;
+		  z-index: 1;
+		}
+		.menu__btn > span,
+		.menu__btn > span::before,
+		.menu__btn > span::after {
+		  display: block;
+		  position: absolute;
+		  width: 100%;
+		  height: 2px;
+		  background-color: #616161;
+		  transition-duration: .25s;
+		}
+		.menu__btn > span::before {
+		  content: '';
+		  top: -8px;
+		}
+		.menu__btn > span::after {
+		  content: '';
+		  top: 8px;
+		}
+		.menu__box {
+		  display: block;
+		  position: fixed;
+		  visibility: hidden;
+		  top: 0;
+		  left: -100%;
+		  width: 300px;
+		  height: 100%;
+		  margin: 0;
+		  padding: 80px 0;
+		  list-style: none;
+		  background-color: #ECEFF1;
+		  box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
+		  transition-duration: .25s;
+		}
+		.menu__item {
+		  display: block;
+		  padding: 12px 24px;
+		  color: #333;
+		  font-family: 'Roboto', sans-serif;
+		  font-size: 20px;
+		  font-weight: 600;
+		  text-decoration: none;
+		  transition-duration: .25s;
+		}
+		.menu__item:hover {
+		  background-color: #CFD8DC;
+		}
+
+		/* End Burger Menu */
+
+		.scroller {
+			position: absolute;
+			width: 60px;
+			height: 200px;
+			background-color: #0b0f00;
+			left: 51%;
+			top: 35%;
+			color: white;
+		}
+		.scroller__list {
+			width: 100%;
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
+		.scroller__list-item {
+			
+		}
+		.scroller__list-item span {
+			font-size: 20px;
+		}
+		.scroller__list-item span.active {
+			font-size: 40px;
+		}
+
+		.wrap-site {
+			/*position: relative;*/
+			display: flex;
+		}
+
+		.header__logo-sidebar {
+			display: none;
+		}
+
+		.sidebar {
+			width: 100px;
+			height: 100vh;
+			background-color: #798c82;
+		}
+		.header {
+			width: 100%;
+			display: flex;
+			min-height: 100vh;
+		}
+		.header__logo {
+			font-size: 36px;
+			font-weight: bold;
+			color: #ededed;
+			text-transform: uppercase;
+			margin-left: 20px;
+		}
+		.header__logo-sp1 {
+			font-size: 26px;
+			vertical-align: top;
+		}
+/*		.header__logo-sp2 {
+			margin-left: 210px;
+			text-transform: none;
+			font-size: 24px;
+		}*/
+		.header__content {
+			padding-top: 20px;
+			width: 50%;
+			background-color: #090f01;
+		}
+		.header__image {
+			display: block;
+			width: 50%;
+			background-color: blue;
+		}
+		.header__image-xs {
+			display: none;
+		}
+		.header__info {
+			margin-top: 160px;
+			margin-left: 50px;
+		}
+		.header__title {
+			font-size: 46px;
+			font-weight: bold;
+			color: #ededed;
+		}
+		.header__text {
+			color: #b6b6b8;
+			margin-bottom: 50px;
+		}
+		.header__btn {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 150px;
+			height: 50px;
+			background-color: #798c82;
+			color: #ebe9e9;
+			text-transform: uppercase;
+			font-size: 15px;
+		}
+
+
+		/*!!! С позиционированные не очень правильно и в верстке HTML доработать элемент */
+
+		.arrow-left,.arrow-right {
+			position: absolute;
+			background-color: #090f01;
+			padding: 10px 20px;
+			color: white;
+			font-weight: bold;
+			font-size: 40px;
+		}
+
+		.arrow-left {
+			right: 120px;
+			bottom: 50px;
+		}
+		.arrow-right {
+			right: 50px;
+			bottom: 50px;
+		}
+
+
+		@media screen and (max-width: 1070px) {
+			.header__content {
+				min-width: 375px;
+			}
+			.header__image {
+				min-width: 375px;
+			}
+			.sidebar {
+				min-width: 100px;
+			}
+			.header__info {
+				margin-top: 130px;
+				width: 80%;
+			}
+			.header__title {
+				font-size: 34px;
+			}
+		}
+		@media screen and (max-width: 900px) {
+			.sidebar {
+				position: absolute;
+				width: 20px;
+				height: 80px;
+			}
+			.header__logo {
+				margin-left: 125px;
+				font-size: 26px;
+			}
+			.scroller {
+				left: 46%;
+			}
+		}
+		@media screen and (max-width: 768px) {
+			.sidebar {
+				height: 60px;
+				width: 100%;
+				background-color: black;
+			}
+			.header {
+				flex-wrap: wrap;
+				margin-top: 60px;
+			}
+			.header__content {
+				width: 100%;
+			}
+			.header__image {
+				width: 100%;
+				max-height: 400px;
+				margin: 0 auto;
+			}
+			.scroller {
+				display: none
+			}
+			.arrow-left,.arrow-right {
+				display: none;
+			}
+			.header__btn {
+				margin-top: 100px;
+				margin-bottom: 100px;
+			}
+			.header__image-lg {
+				display: none;
+			}
+			.header__image-xs {
+				display: block;
+				margin-top: 50px;
+			}
+			.header__logo-sidebar {
+				display: block;
+			}
+			.header__logo-header {
+				display: none;
+			}
+			.header__logo.header__logo-sidebar {
+				margin-top: 6px;
+				margin-left: 50px;
+			}
+			.menu__btn {
+				left: 85%;
+			}
+			.menu__box {
+			  width: 100%;
+			}
+		}
+ 
+	</style>
+</head>
+<body>
+
+
+	<div class="scroller">
+		<ul class="scroller__list">
+			<li class="scroller__list-item">
+				<span class="active">01</span>
+			</li>
+			<li class="scroller__list-item">
+				<span>02</span>
+			</li>
+			<li class="scroller__list-item">
+				<span>03</span>
+			</li>
+			<li class="scroller__list-item">
+				<span>04</span>
+			</li>
+			<li class="scroller__list-item">
+				<span>05</span>
+			</li>
+		</ul>
+	</div>
+
+	<div class="wrap-site">
+		<div class="sidebar">
+			<div class="hamburger-menu">
+		    <input id="menu__toggle" type="checkbox" />
+		    <label class="menu__btn" for="menu__toggle">
+		      <span></span>
+		    </label>
+		    <ul class="menu__box">
+		      <li><a class="menu__item" href="#">Главная</a></li>
+					<li><a class="menu__item" href="#">Проекты</a></li>
+					<li><a class="menu__item" href="#">Команда</a></li>
+					<li><a class="menu__item" href="#">Блог</a></li>
+					<li><a class="menu__item" href="#">Контакты</a></li>
+		    </ul>
+		  </div>
+	  	<a href="#" class="header__logo header__logo-sidebar">
+				Art Mafi<span class="header__logo-sp1">a</span>
+				<!-- <span class="header__logo-sp2">Studia</span> -->
+			</a>
+		</div>
+		<header class="header">
+			<div class="header__content">
+				<a href="#" class="header__logo header__logo-header">
+					Art Mafi<span class="header__logo-sp1">a</span>
+					<!-- <span class="header__logo-sp2">Studia</span> -->
+				</a>
+				<img src="https://56.img.avito.st/640x480/10769637156.jpg" alt="" class="header__image header__image-xs">
+				<div class="header__info">
+					<h1 class="header__title">Татуировки по индивидуальному эскизу</h1>
+					<p class="header__text">От разработки эскиза к безупречной татуировке <br> Создаем шедевры на века</p>
+					<a href="#" class="header__btn">Записаться</a>
+				</div>
+			</div>
+			<img src="https://56.img.avito.st/640x480/10769637156.jpg" alt="" class="header__image header__image-lg">
+			<div class="arrow-left"> < </div>
+			<div class="arrow-right"> > </div>
+		</header>
+	</div>
+
+	
+
+</body>
+</html>
